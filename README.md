@@ -20,13 +20,15 @@ It is meant for:
 - external walkthroughs
 - interaction experiments around human-AI thinking workflows
 
-## Included Demos
+## Featured Demo
 
 ### Question Expander
 
 Turn one sentence into multiple unfinished paths worth exploring.
 
-Current capabilities:
+Question Expander is designed to show how an interface can help people continue thinking before jumping to a final answer.
+
+It supports:
 
 - multi-level question expansion
 - pause-and-reflect checkpoints
@@ -35,11 +37,13 @@ Current capabilities:
 - replay mode for stable demos
 - live mode for OpenAI-compatible LLM backends
 
-Path: `demos/question-expander`
-
-Preview:
+Demo path: `demos/question-expander`
 
 ![Question Expander screenshot](./assets/screenshots/question-expander-home.png)
+
+## Included Demos
+
+- `question-expander`
 
 ## Design Principle
 
@@ -52,6 +56,25 @@ They are optimized for:
 - showing multiple paths
 - preserving intermediate thinking
 - helping people continue, not just conclude
+
+## Quick Start
+
+To run the first demo locally:
+
+```bash
+cd demos/question-expander
+npm install
+npm run adapter:replay
+```
+
+Then in a second terminal:
+
+```bash
+cd demos/question-expander
+npm run dev
+```
+
+Open `http://localhost:5173`.
 
 ## Repository Structure
 

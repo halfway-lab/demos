@@ -1,0 +1,25 @@
+{
+  "name": "question-expander-demo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "adapter": "node ../../tools/question-expander-adapter.mjs",
+    "adapter:live": "HWP_DEMO_PROVIDER=hwp HWP_REPO_PATH=/Users/mac/Documents/HWP node ../../tools/question-expander-adapter.mjs",
+    "adapter:live:file": "node --env-file=.env.live.local ../../tools/question-expander-adapter.mjs",
+    "adapter:replay": "HWP_DEMO_PROVIDER=hwp HWP_REPO_PATH=/Users/mac/Documents/HWP HWP_REPLAY_CHAIN_PATH=/Users/mac/Documents/HWP/logs/chain_hwp_1772451330_20939.jsonl node ../../tools/question-expander-adapter.mjs",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.8"
+  }
+}

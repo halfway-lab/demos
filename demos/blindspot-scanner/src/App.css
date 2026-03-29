@@ -1,0 +1,393 @@
+/* 盲点扫描器样式 */
+.blindspot-scanner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  text-align: left;
+}
+
+.scanner-header {
+  text-align: center;
+  margin-bottom: 48px;
+
+  h1 {
+    font-size: 42px;
+    margin-bottom: 12px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: var(--text);
+    opacity: 0.8;
+  }
+}
+
+/* 输入区域 */
+.input-section {
+  background: var(--code-bg);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 32px;
+
+  label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-h);
+    margin-bottom: 12px;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text-h);
+    resize: vertical;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-bg);
+    }
+
+    &::placeholder {
+      color: var(--text);
+      opacity: 0.5;
+    }
+  }
+}
+
+.scan-button {
+  display: block;
+  width: 100%;
+  padding: 16px 32px;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, var(--accent) 0%, #6366f1 100%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(170, 59, 255, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+/* 扫描动画 */
+.scanning-section {
+  text-align: center;
+  padding: 48px;
+
+  p {
+    font-size: 18px;
+    color: var(--text);
+    margin-top: 24px;
+  }
+}
+
+.scanner-animation {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.scanner-ring {
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+  animation: scanPulse 2s ease-out infinite;
+
+  &:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+}
+
+@keyframes scanPulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* 维度选择区域 */
+.dimensions-section {
+  margin-bottom: 32px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .hint {
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+}
+
+.dimensions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dimension-card {
+  background: var(--code-bg);
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 20px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border-color: var(--accent-border);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+
+  &.selected {
+    border-color: var(--accent);
+    background: var(--accent-bg);
+  }
+
+  .dimension-icon {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+
+  h3 {
+    font-size: 15px;
+    margin: 0 0 6px 0;
+    color: var(--text-h);
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.4;
+    margin: 0;
+  }
+}
+
+/* 检查清单 */
+.checklist-section {
+  margin-bottom: 32px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checklist-item {
+  background: var(--code-bg);
+  border-radius: 12px;
+  padding: 20px;
+  border-left: 4px solid var(--accent);
+}
+
+.question-header {
+  margin-bottom: 12px;
+}
+
+.dimension-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--accent-bg);
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.question-text {
+  font-size: 16px;
+  color: var(--text-h);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.reflection-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text-h);
+  resize: vertical;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  &::placeholder {
+    color: var(--text);
+    opacity: 0.5;
+  }
+}
+
+/* 总结区域 */
+.summary-section {
+  margin-bottom: 32px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+}
+
+.summary-card {
+  background: var(--code-bg);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 24px;
+
+  h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin: 24px 0 12px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .summary-decision {
+    font-size: 18px;
+    color: var(--text-h);
+    padding: 16px;
+    background: var(--bg);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent);
+  }
+}
+
+.selected-dimensions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.selected-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 20px;
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.reflections-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reflection-item {
+  padding: 16px;
+  background: var(--bg);
+  border-radius: 8px;
+
+  .reflection-dim {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 14px;
+    color: var(--text-h);
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.no-reflection {
+  color: var(--text);
+  font-style: italic;
+  padding: 16px;
+  background: var(--bg);
+  border-radius: 8px;
+}
+
+.reset-button {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--border);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: var(--text);
+    color: var(--bg);
+  }
+}

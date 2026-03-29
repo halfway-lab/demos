@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { TopicInput } from './components/TopicInput';
@@ -12,7 +12,7 @@ import './App.css';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
-  const { root, setRoot, updateNode, toggleExpanded, addChild, deleteNode, moveNode, findNode } = useOutline();
+  const { root, setRoot, updateNode, toggleExpanded, addChild, deleteNode, moveNode } = useOutline();
 
   const handleGenerate = useCallback(async (topic: string) => {
     setIsLoading(true);

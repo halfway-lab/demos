@@ -3,8 +3,8 @@
 ## Basic Info
 
 - Project name: halfway-demos
-- Current path: `/Users/mac/Documents/halfway-demos`
-- Repo type: standalone git repo
+- Current path: `/Users/mac/Documents/Halfway-Lab/demos/halfway-demos`
+- Repo type: standalone git repo inside the Halfway-Lab workspace
 - Maintainer role: demo/tooling repo
 - Relationship to HWP:
   - demo-facing usage of HWP tools and adapters
@@ -29,7 +29,7 @@
 - Out-of-scope items:
   - protocol source ownership
 - Current maturity:
-  - active / demo support repo
+  - active demo support repo in the Halfway-Lab workspace
 
 ## Entry Points
 
@@ -83,21 +83,21 @@
 ## Current Risks
 
 - Known issues:
-  - current runbook not yet centralized
+  - current runbook not yet centralized enough
 - Migration risks:
-  - demo tools may reference absolute or sibling paths under `/Users/mac/Documents`
+  - demo tools still carry some compatibility fallbacks for older local paths
 - Path or config coupling:
-  - `tools/question-expander-adapter.mjs` defaults `HWP_REPO_PATH` to `/Users/mac/Documents/HWP`
-  - `demos/question-expander/package.json` hardcodes `/Users/mac/Documents/HWP` in `adapter:live` and `adapter:replay`
-  - `demos/question-expander/tools/llm-agent-bridge.mjs` also defaults to `/Users/mac/Documents/HWP`
+  - active defaults now point to `/Users/mac/Documents/Halfway-Lab/protocol/HWP`
+  - adapter scripts still keep legacy fallback candidates for observation safety
+  - replay examples still depend on local chain-log availability
 
 ## Next Development Step
 
 - Highest-priority next task:
-  - parameterize HWP repo discovery so demo scripts survive a workspace move
+  - keep reducing legacy fallback assumptions while preserving a safe rollback path during observation
 - What should happen right after migration:
-  - test tool-to-protocol path references
+  - continue testing tool-to-protocol path references from the new workspace
 
 ## Notes
 
-- This is a good early migration candidate once docs and runbook are captured.
+- Old `/Users/mac/Documents/halfway-demos` should now be treated as a fallback path only.

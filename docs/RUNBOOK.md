@@ -13,8 +13,9 @@
   - `npm run adapter:live:file`
   - `npm run adapter:replay`
 
-## Migration Warnings
+## Current Path Behavior
 
-- `adapter:live` and `adapter:replay` currently hardcode `/Users/mac/Documents/HWP`
-- `tools/question-expander-adapter.mjs` and `demos/question-expander/tools/llm-agent-bridge.mjs` default to `/Users/mac/Documents/HWP`
-- these paths should be parameterized before or immediately after the move
+- active live-file examples now use `/Users/mac/Documents/Halfway-Lab/protocol/HWP`
+- `tools/question-expander-adapter.mjs` and `demos/question-expander/tools/llm-agent-bridge.mjs` prefer the new canonical HWP path
+- legacy old-path fallbacks still remain in code for observation-period rollback safety
+- replay examples still depend on a local chain log being present at the configured path

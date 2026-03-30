@@ -1,5 +1,6 @@
 import http from 'node:http'
 import { spawn } from 'node:child_process'
+import { existsSync } from 'node:fs'
 import { mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { tmpdir } from 'node:os'
@@ -10,12 +11,22 @@ const PORT = Number(process.env.HWP_DEMO_PORT || 3000)
 const HOST = process.env.HWP_DEMO_HOST || '127.0.0.1'
 const PROVIDER = process.env.HWP_DEMO_PROVIDER || 'mock'
 const COMMAND = process.env.HWP_DEMO_COMMAND || ''
-const HWP_REPO_PATH = process.env.HWP_REPO_PATH || '/Users/mac/Documents/HWP'
 const HWP_REPLAY_CHAIN_PATH = process.env.HWP_REPLAY_CHAIN_PATH || ''
 const HWP_LLM_MODEL = process.env.HWP_LLM_MODEL || ''
 const HWP_LLM_API_KEY = process.env.HWP_LLM_API_KEY || process.env.OPENAI_API_KEY || ''
 const TOOLS_DIR = dirname(fileURLToPath(import.meta.url))
 const HWP_OPENAI_COMPAT_AGENT = join(TOOLS_DIR, 'hwp-openai-compatible-agent.mjs')
+const HWP_REPO_PATH = resolveHwpRepoPath()
+
+function resolveHwpRepoPath() {
+  const candidates = [
+    process.env.HWP_REPO_PATH,
+    join(TOOLS_DIR, '..', '..', '..', 'protocol', 'HWP'),
+    '/Users/mac/Documents/HWP'
+  ].filter(Boolean)
+
+  return candidates.find(candidate => existsSync(candidate)) || candidates[0]
+}
 
 const BRANCH_TYPES_BY_LEVEL = {
   1: ['premise_shift', 'hidden_variable', 'unfinished_path'],

@@ -14,7 +14,7 @@
 
 import https from 'node:https'
 import http from 'node:http'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
@@ -28,9 +28,19 @@ const MODEL = process.env.LLM_MODEL || 'gpt-4o-mini'
 const TIMEOUT = parseInt(process.env.LLM_TIMEOUT || '60000', 10)
 
 // 读取 HWP prompt 模板
+function resolveHwpRepoPath() {
+  const candidates = [
+    process.env.HWP_REPO_PATH,
+    join(__dirname, '..', '..', '..', '..', '..', 'protocol', 'HWP'),
+    '/Users/mac/Documents/HWP'
+  ].filter(Boolean)
+
+  return candidates.find(candidate => existsSync(candidate)) || candidates[0]
+}
+
 function loadPromptTemplate() {
   try {
-    const hwpRepoPath = process.env.HWP_REPO_PATH || '/Users/mac/Documents/HWP'
+    const hwpRepoPath = resolveHwpRepoPath()
     const promptPath = join(hwpRepoPath, 'spec', 'hwp_turn_prompt.txt')
     return readFileSync(promptPath, 'utf8')
   } catch (error) {

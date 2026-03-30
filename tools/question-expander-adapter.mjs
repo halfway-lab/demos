@@ -21,8 +21,7 @@ const HWP_REPO_PATH = resolveHwpRepoPath()
 function resolveHwpRepoPath() {
   const candidates = [
     process.env.HWP_REPO_PATH,
-    join(TOOLS_DIR, '..', '..', '..', 'protocol', 'HWP'),
-    '/Users/mac/Documents/HWP'
+    join(TOOLS_DIR, '..', '..', '..', 'protocol', 'HWP')
   ].filter(Boolean)
 
   return candidates.find(candidate => existsSync(candidate)) || candidates[0]

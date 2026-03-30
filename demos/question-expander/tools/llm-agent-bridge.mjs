@@ -3,7 +3,7 @@
  * LLM Agent Bridge - 通用大模型适配器
  * 
  * 用法:
- *   export HWP_AGENT_BIN=/Users/mac/Documents/HWP-DEMO/apps/question-expander-demo/tools/llm-agent-bridge.mjs
+ *   export HWP_AGENT_BIN=/Users/mac/Documents/Halfway-Lab/demos/halfway-demos/demos/question-expander/tools/llm-agent-bridge.mjs
  *   export LLM_API_KEY=your-api-key
  *   export LLM_API_URL=https://api.openai.com/v1/chat/completions
  *   export LLM_MODEL=gpt-4o-mini
@@ -31,8 +31,7 @@ const TIMEOUT = parseInt(process.env.LLM_TIMEOUT || '60000', 10)
 function resolveHwpRepoPath() {
   const candidates = [
     process.env.HWP_REPO_PATH,
-    join(__dirname, '..', '..', '..', '..', '..', 'protocol', 'HWP'),
-    '/Users/mac/Documents/HWP'
+    join(__dirname, '..', '..', '..', '..', '..', 'protocol', 'HWP')
   ].filter(Boolean)
 
   return candidates.find(candidate => existsSync(candidate)) || candidates[0]

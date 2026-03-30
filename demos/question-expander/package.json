@@ -7,7 +7,7 @@
     "adapter": "node ../../tools/question-expander-adapter.mjs",
     "adapter:live": "HWP_DEMO_PROVIDER=hwp node ../../tools/question-expander-adapter.mjs",
     "adapter:live:file": "node --env-file=.env.live.local ../../tools/question-expander-adapter.mjs",
-    "adapter:replay": "HWP_DEMO_PROVIDER=hwp HWP_REPLAY_CHAIN_PATH=/Users/mac/Documents/HWP/logs/chain_hwp_1772451330_20939.jsonl node ../../tools/question-expander-adapter.mjs",
+    "adapter:replay": "HWP_DEMO_PROVIDER=hwp HWP_REPLAY_CHAIN_PATH=/Users/mac/Documents/Halfway-Lab/protocol/HWP/logs/chain_hwp_1772451330_20939.jsonl node ../../tools/question-expander-adapter.mjs",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
